@@ -3,243 +3,517 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tumu — Sistem Stok Toko, Beres 7 Hari</title>
-<meta name="description" content="Sistem stok, invoice, dan laporan yang pas sama alur toko kamu. Sekali bayar, bisa dari HP. Mulai Rp1,95 jt. Konsultasi gratis via WhatsApp.">
-<meta property="og:title" content="Tumu — Sistem Stok Toko, Beres 7 Hari">
-<meta property="og:description" content="Sistem stok, invoice, dan laporan untuk toko. Sekali bayar, bisa dari HP. Mulai Rp1,95 jt.">
+<title>tumu — Satu partner untuk seluruh operasional</title>
+<meta name="description" content="tumu membantu bisnis merapikan sistem logistik dan non-logistik, SOP, risk management, serta training dan sertifikasi tim. Smarter systems. Smoother logistics.">
+<meta property="og:title" content="tumu — Satu partner untuk seluruh operasional">
+<meta property="og:description" content="Sistem, SOP, training, sampai risk management ditangani satu tim. Smarter systems. Smoother logistics.">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#1F4FD8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231F4FD8'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 33h14'/%3E%3Cpath d='M23 42v15a8 8 0 0 0 16 0v-5a9 9 0 0 1 18 0v6a11.5 11.5 0 0 0 23 0V44'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+:root{
+  --blue:#1F4FD8;
+  --blue-600:#1A44C2;
+  --navy:#0C1B4D;
+  --navy-2:#16275E;
+  --navy-line:#2A3B74;
+  --bg:#F3F6FD;
+  --ink:#0C1B4D;
+  --muted:#4A5578;
+  --line:#DCE3F5;
+  --tint:#E4EBFC;
+  --sky:#8DA6FA;
+  --sky-soft:#C3D2FB;
+  --radius:24px;
+}
+*{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#0F172A;background:#F5F8FF}
-a{text-decoration:none}
-a:focus-visible,summary:focus-visible{outline:3px solid #F5B301;outline-offset:3px}
-details>summary{list-style:none;cursor:pointer}
-details>summary::-webkit-details-marker{display:none}
-details[open] .faq-plus{transform:rotate(45deg)}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:3px solid #FFC94A;outline-offset:3px;border-radius:8px}
+img,svg{display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+section{scroll-margin-top:72px}
+
+/* ---------- logo ---------- */
+.logo{display:inline-flex;align-items:center;gap:12px;font-weight:700;font-size:26px;letter-spacing:-0.02em}
+.logo-mark{width:40px;height:40px;border-radius:11px;background:#fff;display:grid;place-items:center;flex:none}
+.logo-mark svg{width:30px;height:30px}
+.logo--blue .logo-mark{background:var(--blue)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:700;font-size:16px;transition:transform .15s ease,background .15s ease,box-shadow .15s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-white{background:#fff;color:var(--blue)}
+.btn-white:hover{box-shadow:0 10px 24px rgba(8,20,70,.25)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-600)}
+.btn-ghost{color:#fff;border:1.5px solid rgba(255,255,255,.45)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-sm{min-height:44px;padding:0 20px;font-size:15px}
+
+/* ---------- section heads ---------- */
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin:0 0 20px}
+.eyebrow::before{content:"";width:40px;height:3px;border-radius:3px;background:currentColor}
+.h2{margin:0;font-size:clamp(34px,5.2vw,60px);line-height:1.04;font-weight:800;letter-spacing:-0.035em}
+.h2 .alt{display:block;color:var(--blue)}
+.lead{margin:20px 0 0;font-size:18px;color:var(--muted);max-width:560px}
+.sec{padding:96px 0}
+.sec-head{margin-bottom:48px}
+.dark{background:var(--navy);color:#fff}
+.dark .eyebrow{color:var(--sky)}
+.dark .h2 .alt{color:var(--sky)}
+.dark .lead{color:var(--sky-soft)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(31,79,216,.92);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.nav .logo{font-size:24px}
+.nav .logo-mark{width:36px;height:36px;border-radius:10px}
+.nav .logo-mark svg{width:27px;height:27px}
+.nav-links{display:flex;gap:28px;font-size:15px;font-weight:600}
+.nav-links a{opacity:.85}
+.nav-links a:hover{opacity:1}
+@media (max-width:900px){.nav-links{display:none}}
+
+/* ---------- hero ---------- */
+.hero{background:var(--blue);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -20% -40% auto;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 65%);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1fr;gap:56px;padding-top:72px;padding-bottom:96px;position:relative;z-index:1}
+.tagline{margin:14px 0 0;font-size:16px;font-weight:500;color:rgba(255,255,255,.88)}
+.hero .eyebrow{color:var(--sky-soft);margin-top:40px}
+.hero h1{margin:0;font-size:clamp(42px,5.2vw,64px);line-height:1.02;font-weight:800;letter-spacing:-0.04em}
+.hero h1 .alt{color:var(--sky-soft)}
+.hero .lead{color:rgba(255,255,255,.88);font-size:19px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+@media (min-width:1080px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr) minmax(0,540px);align-items:center;gap:48px}
+}
+
+/* ecosystem diagram */
+.eco{position:relative;width:100%;max-width:640px;margin:0 auto;aspect-ratio:1/0.9}
+.eco-lines{position:absolute;inset:0;width:100%;height:100%}
+.eco-lines line{stroke:rgba(255,255,255,.45);stroke-width:1.5;stroke-dasharray:4 6;vector-effect:non-scaling-stroke}
+.eco-hub{position:absolute;left:50%;top:50%;width:34%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center}
+.eco-hub-in{width:84%;aspect-ratio:1;border-radius:50%;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 20px 40px rgba(6,14,50,.35)}
+.eco-hub-in .logo-mark{width:clamp(40px,8vw,56px);height:clamp(40px,8vw,56px);border-radius:14px}
+.eco-hub-in .logo-mark svg{width:78%;height:78%}
+.eco-hub-in span{font-weight:700;font-size:clamp(18px,2.4vw,26px);letter-spacing:-0.02em}
+.pill{position:absolute;transform:translate(-50%,-50%);padding:11px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:#2A5BE0;font-weight:700;font-size:14.5px;line-height:1.2;text-align:center;white-space:nowrap;color:#fff}
+.pill--main{background:#fff;color:var(--blue);border-color:#fff;box-shadow:0 12px 28px rgba(6,14,50,.25)}
+@media (max-width:620px){
+  .eco{aspect-ratio:auto;display:flex;flex-direction:column;align-items:center;gap:24px}
+  .eco-lines{display:none}
+  .eco-hub{position:relative;left:auto;top:auto;transform:none;width:200px}
+  .eco-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+  .pill{position:static;transform:none;white-space:normal;font-size:14px;padding:10px 16px}
+}
+
+/* ---------- untuk siapa ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:900px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.grid-3{grid-template-columns:1fr}}
+.ind{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;min-height:280px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.ind:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(12,27,77,.08);border-color:#C9D5F5}
+.ind-ic{width:56px;height:56px;border-radius:16px;background:var(--tint);display:grid;place-items:center;color:var(--blue)}
+.ind-ic svg{width:28px;height:28px}
+.ind h3{margin:auto 0 8px;padding-top:40px;font-size:24px;line-height:1.15;font-weight:800;letter-spacing:-0.02em}
+.ind p{margin:0;font-size:16px;color:var(--muted)}
+@media (max-width:560px){.ind{min-height:0}.ind h3{padding-top:24px}}
+.note{margin:32px 0 0;font-size:18px;color:var(--muted)}
+.note a{color:var(--blue);font-weight:700}
+.note a:hover{text-decoration:underline}
+
+/* ---------- model kerja sama ---------- */
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+@media (max-width:960px){.plans{grid-template-columns:1fr;max-width:560px}}
+.plan{background:var(--navy-2);border:1px solid var(--navy-line);border-radius:var(--radius);padding:34px 30px;display:flex;flex-direction:column}
+.badge{align-self:flex-start;padding:6px 14px;border-radius:999px;background:var(--tint);color:var(--blue);font-size:13px;font-weight:700;margin-bottom:16px}
+.plan h3{margin:0;font-size:28px;line-height:1.12;font-weight:800;letter-spacing:-0.02em}
+.plan .desc{margin:14px 0 0;font-size:17px;color:var(--sky-soft)}
+.plan hr{border:0;border-top:1px solid var(--navy-line);margin:24px 0}
+.plan ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.plan li{display:flex;gap:12px;align-items:flex-start;font-weight:600;font-size:17px}
+.chk{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;flex:none;margin-top:1px}
+.chk svg{width:13px;height:13px}
+.plan .btn{margin-top:auto}
+.plan .plan-cta{margin-top:32px;align-self:stretch}
+.plan--feat{background:#fff;color:var(--ink);border-color:#fff;box-shadow:0 30px 60px rgba(0,0,0,.25)}
+.plan--feat .desc{color:var(--muted)}
+.plan--feat hr{border-top-color:var(--line)}
+.plan--feat .chk{background:var(--blue)}
+.plan-cta.btn-outline{border:1.5px solid rgba(255,255,255,.35);color:#fff}
+.plan-cta.btn-outline:hover{background:rgba(255,255,255,.08)}
+
+.band{margin-top:48px;background:var(--blue);border-radius:var(--radius);padding:36px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.band h3{margin:0;font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-0.02em}
+.band p{margin:6px 0 0;font-size:18px;color:rgba(255,255,255,.88)}
+
+/* ---------- cara kerja ---------- */
+.steps{list-style:none;margin:0;padding:0;max-width:860px}
+.step{display:grid;grid-template-columns:72px 1fr;gap:28px;position:relative;padding-bottom:44px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:35px;top:72px;bottom:0;width:2px;background:#C9D5F5}
+.step:last-child::before{display:none}
+.step-n{width:72px;height:72px;border-radius:50%;border:2.5px solid var(--blue);color:var(--blue);background:#fff;display:grid;place-items:center;font-weight:800;font-size:24px}
+.step:first-child .step-n{background:var(--blue);color:#fff}
+.step h3{margin:12px 0 8px;font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-0.025em}
+.step p{margin:0;font-size:19px;color:var(--muted);max-width:680px}
+@media (max-width:560px){
+  .step{grid-template-columns:52px 1fr;gap:18px}
+  .step-n{width:52px;height:52px;font-size:18px}
+  .step::before{left:25px;top:52px}
+  .step h3{margin-top:8px}
+  .step p{font-size:17px}
+}
+.cara-grid{display:grid;grid-template-columns:1fr;gap:48px}
+@media (min-width:1000px){.cara-grid{grid-template-columns:400px 1fr;gap:64px}.cara-grid .sec-head{position:sticky;top:120px;align-self:start}}
+
+/* ---------- kenapa tumu ---------- */
+.why{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:760px){.why{grid-template-columns:1fr}}
+.why-card{background:var(--navy-2);border:1px solid var(--navy-line);border-radius:var(--radius);padding:36px;min-height:320px;display:flex;flex-direction:column}
+.why-card .num{font-size:64px;font-weight:800;letter-spacing:-0.04em;line-height:1;color:var(--sky)}
+.why-card h3{margin:auto 0 10px;padding-top:40px;font-size:28px;line-height:1.15;font-weight:800;letter-spacing:-0.02em}
+.why-card p{margin:0;font-size:18px;color:var(--sky-soft)}
+.why-card--feat{background:var(--blue);border-color:var(--blue)}
+.why-card--feat .num{color:#fff}
+.why-card--feat p{color:rgba(255,255,255,.9)}
+@media (max-width:760px){.why-card{min-height:0}.why-card .num{font-size:48px}.why-card h3{padding-top:28px;font-size:24px}}
+
+/* ---------- final CTA ---------- */
+.final{background:var(--blue);color:#fff;text-align:center;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;left:50%;top:-60%;width:900px;height:900px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 60%);pointer-events:none}
+.final .wrap{position:relative;padding-top:104px;padding-bottom:104px;display:flex;flex-direction:column;align-items:center}
+.final .eyebrow{color:var(--sky-soft)}
+.final h2{margin:0;font-size:clamp(36px,5.6vw,64px);line-height:1.04;font-weight:800;letter-spacing:-0.04em;max-width:820px}
+.final h2 .alt{display:block;color:var(--sky-soft)}
+.final p{margin:22px 0 36px;font-size:19px;color:rgba(255,255,255,.9);max-width:560px}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy);color:#fff}
+footer .wrap{padding-top:56px;padding-bottom:40px}
+.foot-top{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start;padding-bottom:36px;border-bottom:1px solid var(--navy-line)}
+.foot-top .tagline{color:var(--sky-soft)}
+.foot-links{display:flex;flex-wrap:wrap;gap:12px}
+.foot-link{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--navy-line);font-weight:600;font-size:15px}
+.foot-link:hover{background:var(--navy-2)}
+.foot-link svg{width:18px;height:18px}
+.foot-bot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;padding-top:24px;font-size:14px;color:#8A97C2}
+
+/* ---------- floating WA (mobile) ---------- */
+.fab{position:fixed;right:16px;bottom:16px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:none;place-items:center;box-shadow:0 12px 28px rgba(0,0,0,.25)}
+.fab svg{width:30px;height:30px}
+@media (max-width:900px){.fab{display:grid}}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.btn,.ind{transition:none}}
 </style>
 </head>
 <body>
-<div style="background:#F5F8FF;display:flex;flex-direction:column">
+
+<!-- Logo symbol, reused everywhere -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="tumu-mark" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 30h15"/>
+      <path d="M21 40v17a8.5 8.5 0 0 0 17 0v-6a9.5 9.5 0 0 1 19 0v7a12 12 0 0 0 24 0V42"/>
+    </g>
+  </symbol>
+  <symbol id="ic-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 0 1 9.42 9.44c0 5.2-4.23 9.43-9.43 9.43m8.02-17.46A11.27 11.27 0 0 0 12.05.72C5.8.72.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6.02-1.58a11.3 11.3 0 0 0 5.42 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.33-8.02"/></symbol>
+  <symbol id="ic-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+</svg>
 
 <!-- NAV -->
-<header style="background:#F5F8FF">
-<div style="max-width:1120px;margin:0 auto;box-sizing:border-box;padding:16px 24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
-<a href="#atas" style="display:flex;align-items:center;gap:10px;color:#0A1A4F;font-weight:800;font-size:22px;letter-spacing:0.02em;min-height:44px">
-<span style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:#1F4FD8;color:#fff;font-size:15px;font-weight:800">TM</span>
-TUMU
-</a>
-<a href="https://wa.me/6285882672909?text=Halo+TUMU%2C+saya+mau+konsultasi+gratis+sistem+stok+toko" style="display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:999px;background:#0A1A4F;color:#fff;font-weight:700;font-size:15px">Konsultasi gratis</a>
-</div>
+<header class="nav">
+  <div class="wrap">
+    <a href="#atas" class="logo" aria-label="tumu, kembali ke atas">
+      <span class="logo-mark"><svg style="color:var(--blue)"><use href="#tumu-mark"/></svg></span>
+      tumu
+    </a>
+    <nav class="nav-links" aria-label="Navigasi utama">
+      <a href="#untuk-siapa">Untuk siapa</a>
+      <a href="#model">Model kerja sama</a>
+      <a href="#cara-kerja">Cara kerja</a>
+      <a href="#kenapa">Kenapa tumu</a>
+    </nav>
+    <a class="btn btn-white btn-sm" href="https://wa.me/6285882672909?text=Halo+tumu%2C+saya+mau+konsultasi+soal+operasional+bisnis+saya">
+      <svg><use href="#ic-wa"/></svg>Konsultasi
+    </a>
+  </div>
 </header>
 
-<!-- HERO -->
-<section id="atas" style="background:#F5F8FF">
-<div style="max-width:1120px;margin:0 auto;box-sizing:border-box;padding:48px 24px 72px;display:flex;flex-wrap:wrap;gap:48px;align-items:center">
-<div style="flex:1 1 440px;display:flex;flex-direction:column;gap:24px;min-width:0">
-<span style="align-self:flex-start;padding:6px 14px;border-radius:999px;background:#E3EAFF;color:#1B3FA8;font-size:14px;font-weight:700">Sistem stok &amp; invoice untuk toko</span>
-<h1 style="margin:0;font-size:clamp(38px,6vw,64px);line-height:1.05;font-weight:800;color:#0A1A4F;letter-spacing:-0.02em">Sistem stok toko, <span style="color:#1F4FD8">beres 7 hari.</span></h1>
-<p style="margin:0;font-size:18px;line-height:1.6;color:#475569;max-width:520px">Kami bikin sistem stok, invoice, dan laporan yang pas sama alur usaha kamu. Sekali bayar, bisa dibuka dari HP.</p>
-<div style="display:flex;flex-wrap:wrap;gap:12px">
-<a href="https://wa.me/6285882672909?text=Halo+TUMU%2C+saya+mau+konsultasi+gratis+sistem+stok+toko" style="display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:14px;background:#1F4FD8;color:#fff;font-weight:700;font-size:17px">Konsultasi gratis via WhatsApp</a>
-<a href="#paket" style="display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:14px;background:#fff;color:#0A1A4F;font-weight:700;font-size:17px;border:2px solid #C7D3F5">Lihat paket</a>
-</div>
-<div style="display:flex;flex-wrap:wrap;gap:10px">
-<span style="padding:8px 14px;border-radius:999px;background:#fff;border:1px solid #D5DEF7;font-size:14px;font-weight:700;color:#1B3FA8">Sekali bayar</span>
-<span style="padding:8px 14px;border-radius:999px;background:#fff;border:1px solid #D5DEF7;font-size:14px;font-weight:700;color:#1B3FA8">Bisa dari HP</span>
-<span style="padding:8px 14px;border-radius:999px;background:#fff;border:1px solid #D5DEF7;font-size:14px;font-weight:700;color:#1B3FA8">Mulai Rp1,95 jt</span>
-</div>
-</div>
+<main>
+<!-- HERO / EKOSISTEM LAYANAN -->
+<section class="hero" id="atas">
+  <div class="wrap">
+    <div>
+      <p class="tagline">Smarter systems. Smoother logistics.</p>
+      <p class="eyebrow">Ekosistem layanan</p>
+      <h1>Satu partner untuk <span class="alt">seluruh operasional.</span></h1>
+      <p class="lead">Dari sistem logistik dan non-logistik, SOP, risk management, sampai training tim. tumu ikut turun ke lapangan dan membantu bisnis Anda tumbuh.</p>
+      <div class="hero-cta">
+        <a class="btn btn-white" href="https://wa.me/6285882672909?text=Halo+tumu%2C+saya+mau+konsultasi+soal+operasional+bisnis+saya">
+          <svg><use href="#ic-wa"/></svg>Konsultasi via WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#model">Lihat model kerja sama</a>
+      </div>
+    </div>
 
-<div style="flex:0 1 340px;display:flex;justify-content:center;margin:0 auto">
-<div role="img" aria-label="Contoh tampilan dashboard stok di HP: 1.248 item, 32 masuk, 18 keluar, dan peringatan stok menipis" style="width:300px;box-sizing:border-box;background:#0A1A4F;border-radius:40px;padding:14px;box-shadow:0 30px 60px rgba(10,26,79,0.25)">
-<div style="background:#fff;border-radius:28px;padding:22px 18px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box">
-<span style="font-size:13px;font-weight:700;color:#475569">Stok hari ini</span>
-<span style="font-size:38px;font-weight:800;color:#0A1A4F;line-height:1">1.248 <span style="font-size:16px;color:#475569">item</span></span>
-<div style="display:flex;gap:8px">
-<span style="padding:5px 10px;border-radius:999px;background:#DCFCE7;color:#14532D;font-size:12px;font-weight:700">+32 masuk</span>
-<span style="padding:5px 10px;border-radius:999px;background:#FEE2E2;color:#7F1D1D;font-size:12px;font-weight:700">18 keluar</span>
-</div>
-<div style="background:#FFF7E0;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:3px">
-<span style="font-size:12px;font-weight:800;color:#7A4B00">Stok menipis</span>
-<span style="font-size:12px;color:#5B4A1F;line-height:1.4">Gula pasir tinggal 12. Waktunya order.</span>
-</div>
-<div style="display:flex;flex-direction:column;gap:10px">
-<div style="height:10px;border-radius:6px;background:#E3EAFF"><div style="width:86%;height:10px;border-radius:6px;background:#1F4FD8"></div></div>
-<div style="height:10px;border-radius:6px;background:#E3EAFF"><div style="width:52%;height:10px;border-radius:6px;background:#F59E0B"></div></div>
-<div style="height:10px;border-radius:6px;background:#E3EAFF"><div style="width:30%;height:10px;border-radius:6px;background:#EF4444"></div></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+    <div class="eco" role="img" aria-label="Ekosistem layanan tumu: sistem logistik, sistem non-logistik, efisiensi proses, review dan SOP, training dan sertifikasi, pertumbuhan omset, serta risk management">
+      <svg class="eco-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="50" y1="50" x2="50" y2="7"/>
+        <line x1="50" y1="50" x2="21" y2="26"/>
+        <line x1="50" y1="50" x2="79" y2="26"/>
+        <line x1="50" y1="50" x2="15.5" y2="60"/>
+        <line x1="50" y1="50" x2="84.5" y2="60"/>
+        <line x1="50" y1="50" x2="29" y2="92"/>
+        <line x1="50" y1="50" x2="71" y2="92"/>
+      </svg>
+      <div class="eco-hub">
+        <div class="eco-hub-in">
+          <span class="logo-mark"><svg style="color:var(--blue)"><use href="#tumu-mark"/></svg></span>
+          <span>tumu</span>
+        </div>
+      </div>
+      <div class="eco-pills">
+        <span class="pill pill--main" style="left:50%;top:7%">Sistem logistik</span>
+        <span class="pill" style="left:21%;top:26%">Sistem non-logistik</span>
+        <span class="pill" style="left:79%;top:26%">Efisiensi proses</span>
+        <span class="pill" style="left:15.5%;top:60%">Risk management</span>
+        <span class="pill" style="left:84.5%;top:60%">Review &amp; SOP</span>
+        <span class="pill" style="left:29%;top:92%">Pertumbuhan omset</span>
+        <span class="pill" style="left:71%;top:92%">Training &amp; sertifikasi</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- MASALAH -->
-<section style="background:#0A1A4F">
-<div style="max-width:1120px;margin:0 auto;box-sizing:border-box;padding:72px 24px;display:flex;flex-direction:column;gap:40px">
-<div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
-<h2 style="margin:0;font-size:clamp(30px,4.5vw,44px);line-height:1.1;font-weight:800;color:#fff;letter-spacing:-0.01em">Masih catat stok &amp; pesanan di buku atau Excel?</h2>
-<p style="margin:0;font-size:18px;line-height:1.6;color:#BFD0FF">Pantesan capek. Datanya kepisah-pisah.</p>
-</div>
-<div style="display:flex;flex-wrap:wrap;gap:20px">
-<div style="flex:1 1 260px;box-sizing:border-box;background:#13286B;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px">
-<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8FB0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>
-<h3 style="margin:0;font-size:20px;font-weight:800;color:#fff">Stok hilang entah ke mana</h3>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#BFD0FF">"Hmm… stok aku kemana ya?" Catatan masuk dan keluar tidak pernah cocok sama isi rak.</p>
-</div>
-<div style="flex:1 1 260px;box-sizing:border-box;background:#13286B;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px">
-<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8FB0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
-<h3 style="margin:0;font-size:20px;font-weight:800;color:#fff">Akhir bulan, semua numpuk</h3>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#BFD0FF">Nota belum masuk buku kas, pengeluaran tidak jelas. Bulan ini untung atau rugi?</p>
-</div>
-<div style="flex:1 1 260px;box-sizing:border-box;background:#13286B;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px">
-<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8FB0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>
-<h3 style="margin:0;font-size:20px;font-weight:800;color:#fff">Nggak tahu barang mana yang penting</h3>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#BFD0FF">Barang yang paling laris dan barang yang nyangkut sama-sama tersimpan di rak, tanpa ada yang membedakan.</p>
-</div>
-</div>
-</div>
+<!-- UNTUK SIAPA -->
+<section class="sec" id="untuk-siapa">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Untuk siapa</p>
+      <h2 class="h2">Bisnis yang cocok <span class="alt">jadi partner tumu.</span></h2>
+    </div>
+    <div class="grid-3">
+      <article class="ind rv">
+        <div class="ind-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></div>
+        <h3>Distributor &amp; grosir</h3>
+        <p>Banyak SKU, banyak pengiriman.</p>
+      </article>
+      <article class="ind rv">
+        <div class="ind-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20h20"/><path d="M3 20V9l5 3V9l5 3V9l5 3V4h3v16"/><path d="M7 16h2M11 16h2M15 16h2"/></svg></div>
+        <h3>Manufaktur</h3>
+        <p>Bahan baku, barang jadi, gudang pabrik.</p>
+      </article>
+      <article class="ind rv">
+        <div class="ind-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l1 14H5L6 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg></div>
+        <h3>E-commerce &amp; ritel</h3>
+        <p>Pesanan harian, picking cepat, retur.</p>
+      </article>
+      <article class="ind rv">
+        <div class="ind-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h11v10H2z"/><path d="M13 9h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></div>
+        <h3>Ekspedisi &amp; 3PL</h3>
+        <p>Armada, rute, bukti terima.</p>
+      </article>
+      <article class="ind rv">
+        <div class="ind-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14h18l-2 5H5l-2-5Z"/><path d="M6 14V9h12v5"/><path d="M10 9V5h4v4"/><path d="M2 22c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1"/></svg></div>
+        <h3>Ekspor-impor</h3>
+        <p>Kontainer, dokumen, demurrage.</p>
+      </article>
+      <article class="ind rv">
+        <div class="ind-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></svg></div>
+        <h3>Bisnis lainnya</h3>
+        <p>Butuh sistem untuk proses non-logistik.</p>
+      </article>
+    </div>
+    <p class="note rv">Industri Anda tidak ada di daftar? <a href="https://wa.me/6285882672909?text=Halo+tumu%2C+industri+saya+tidak+ada+di+daftar.+Saya+mau+ceritakan+prosesnya">Ceritakan prosesnya, kami pelajari.</a></p>
+  </div>
+</section>
+
+<!-- MODEL KERJA SAMA -->
+<section class="sec dark" id="model">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Model kerja sama</p>
+      <h2 class="h2">Pilih cara kerja sama <span class="alt">yang pas untuk Anda.</span></h2>
+    </div>
+    <div class="plans">
+      <article class="plan rv">
+        <h3>Proyek Sistem</h3>
+        <p class="desc">Bisnis yang butuh sistem baru atau mengganti sistem lama.</p>
+        <hr>
+        <ul>
+          <li><span class="chk"><svg><use href="#ic-check"/></svg></span>Analisa kebutuhan</li>
+          <li><span class="chk"><svg><use href="#ic-check"/></svg></span>Pengembangan sistem</li>
+          <li><span class="chk"><svg><use href="#ic-check"/></svg></span>Implementasi &amp; training</li>
+        </ul>
+        <a class="btn plan-cta btn-outline" href="https://wa.me/6285882672909?text=Halo+tumu%2C+saya+tertarik+dengan+Proyek+Sistem">Tanya Proyek Sistem</a>
+      </article>
+      <article class="plan plan--feat rv">
+        <span class="badge">Jangka panjang</span>
+        <h3>Pendampingan Operasional</h3>
+        <p class="desc">Perusahaan yang ingin efisien secara berkelanjutan.</p>
+        <hr>
+        <ul>
+          <li><span class="chk"><svg><use href="#ic-check"/></svg></span>Review proses berkala</li>
+          <li><span class="chk"><svg><use href="#ic-check"/></svg></span>Perbaikan SOP</li>
+          <li><span class="chk"><svg><use href="#ic-check"/></svg></span>Monitoring KPI &amp; risiko</li>
+        </ul>
+        <a class="btn plan-cta btn-blue" href="https://wa.me/6285882672909?text=Halo+tumu%2C+saya+tertarik+dengan+Pendampingan+Operasional">Tanya Pendampingan</a>
+      </article>
+      <article class="plan rv">
+        <h3>Training &amp; Sertifikasi</h3>
+        <p class="desc">Tim yang perlu naik level dan bekerja dengan standar.</p>
+        <hr>
+        <ul>
+          <li><span class="chk"><svg><use href="#ic-check"/></svg></span>Materi sesuai kebutuhan</li>
+          <li><span class="chk"><svg><use href="#ic-check"/></svg></span>Pelatihan tim</li>
+          <li><span class="chk"><svg><use href="#ic-check"/></svg></span>Sertifikasi</li>
+        </ul>
+        <a class="btn plan-cta btn-outline" href="https://wa.me/6285882672909?text=Halo+tumu%2C+saya+tertarik+dengan+Training+%26+Sertifikasi">Tanya Training</a>
+      </article>
+    </div>
+    <div class="band rv">
+      <div>
+        <h3>Semua dimulai dari satu obrolan.</h3>
+        <p>Ceritakan tantangan operasional Anda, kami bantu petakan solusinya.</p>
+      </div>
+      <a class="btn btn-white" href="https://wa.me/6285882672909?text=Halo+tumu%2C+saya+mau+ceritakan+tantangan+operasional+bisnis+saya">
+        <svg><use href="#ic-wa"/></svg>Mulai ngobrol
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- CARA KERJA -->
-<section style="background:#F5F8FF">
-<div style="max-width:1120px;margin:0 auto;box-sizing:border-box;padding:72px 24px;display:flex;flex-direction:column;gap:40px">
-<div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
-<span style="font-size:14px;font-weight:800;color:#1F4FD8;letter-spacing:0.08em">CARA KERJA</span>
-<h2 style="margin:0;font-size:clamp(30px,4.5vw,44px);line-height:1.1;font-weight:800;color:#0A1A4F;letter-spacing:-0.01em">Dari buku tulis ke HP, jadi dalam 7 hari.</h2>
-</div>
-<div style="display:flex;flex-wrap:wrap;gap:20px">
-<div style="flex:1 1 260px;box-sizing:border-box;background:#fff;border:1px solid #D5DEF7;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px">
-<span style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:#E3EAFF;color:#1B3FA8;font-size:18px;font-weight:800">1</span>
-<h3 style="margin:0;font-size:20px;font-weight:800;color:#0A1A4F">Cerita alur toko kamu</h3>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#475569">Kamu ceritakan bagaimana barang masuk, dijual, dan dicatat sekarang.</p>
-</div>
-<div style="flex:1 1 260px;box-sizing:border-box;background:#fff;border:1px solid #D5DEF7;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px">
-<span style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:#E3EAFF;color:#1B3FA8;font-size:18px;font-weight:800">2</span>
-<h3 style="margin:0;font-size:20px;font-weight:800;color:#0A1A4F">Kami bikin sistemnya</h3>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#475569">Sistem stok, invoice, dan laporan disusun mengikuti alur usaha kamu, bukan sebaliknya.</p>
-</div>
-<div style="flex:1 1 260px;box-sizing:border-box;background:#0A1A4F;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px">
-<span style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:#1F4FD8;color:#fff;font-size:18px;font-weight:800">3</span>
-<h3 style="margin:0;font-size:20px;font-weight:800;color:#fff">Training, langsung pakai</h3>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#BFD0FF">Tim kamu dilatih sampai bisa dipakai sendiri dari HP.</p>
-</div>
-</div>
-</div>
+<section class="sec" id="cara-kerja">
+  <div class="wrap cara-grid">
+    <div class="sec-head rv">
+      <p class="eyebrow">Cara kerja</p>
+      <h2 class="h2">Begini kami bekerja <span class="alt">bersama tim Anda.</span></h2>
+    </div>
+    <ol class="steps">
+      <li class="step rv">
+        <span class="step-n">01</span>
+        <div>
+          <h3>Pemetaan &amp; audit</h3>
+          <p>Kami turun ke lapangan: gudang, armada, dokumen. Setiap titik bocor dicatat.</p>
+        </div>
+      </li>
+      <li class="step rv">
+        <span class="step-n">02</span>
+        <div>
+          <h3>Rancang solusi</h3>
+          <p>Sistem, SOP baru, dan prioritas perbaikan disusun bersama tim Anda.</p>
+        </div>
+      </li>
+      <li class="step rv">
+        <span class="step-n">03</span>
+        <div>
+          <h3>Bangun &amp; latih</h3>
+          <p>Sistem dikembangkan, tim dilatih dan disertifikasi agar benar-benar dipakai.</p>
+        </div>
+      </li>
+      <li class="step rv">
+        <span class="step-n">04</span>
+        <div>
+          <h3>Dampingi &amp; ukur</h3>
+          <p>KPI dipantau, risiko dikendalikan, perbaikan terus berjalan sampai hasilnya terasa.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
 </section>
 
-<!-- PAKET -->
-<section id="paket" style="background:#fff">
-<div style="max-width:1120px;margin:0 auto;box-sizing:border-box;padding:72px 24px;display:flex;flex-direction:column;gap:40px">
-<div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
-<span style="font-size:14px;font-weight:800;color:#1F4FD8;letter-spacing:0.08em">PAKET</span>
-<h2 style="margin:0;font-size:clamp(30px,4.5vw,44px);line-height:1.1;font-weight:800;color:#0A1A4F;letter-spacing:-0.01em">Sekali bayar. Udah.</h2>
-<p style="margin:0;font-size:18px;line-height:1.6;color:#475569">Harga early bird untuk 5 klien pertama.</p>
-</div>
-<div style="display:flex;flex-wrap:wrap;gap:20px;align-items:stretch">
-
-<div style="flex:1 1 300px;box-sizing:border-box;background:#F5F8FF;border:1px solid #D5DEF7;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:20px">
-<h3 style="margin:0;font-size:22px;font-weight:800;color:#0A1A4F">Basic</h3>
-<div style="display:flex;flex-direction:column;gap:2px">
-<span style="font-size:15px;color:#64748B;text-decoration:line-through">Rp2,95 jt</span>
-<span style="font-size:40px;font-weight:800;color:#0A1A4F;line-height:1.1">Rp1,95 jt</span>
-</div>
-<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:16px;color:#334155">
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Stok</li>
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Invoice</li>
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Kwitansi</li>
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Dashboard</li>
-</ul>
-<a href="https://wa.me/6285882672909?text=Halo+TUMU%2C+saya+tertarik+paket+Basic" style="margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;background:#0A1A4F;color:#fff;font-weight:700;font-size:16px">Tanya paket Basic</a>
-</div>
-
-<div style="flex:1 1 300px;box-sizing:border-box;background:#0A1A4F;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:20px">
-<h3 style="margin:0;font-size:22px;font-weight:800;color:#fff">Advanced</h3>
-<div style="display:flex;flex-direction:column;gap:2px">
-<span style="font-size:15px;color:#9FB2E6;text-decoration:line-through">Rp6,5 jt</span>
-<span style="font-size:40px;font-weight:800;color:#fff;line-height:1.1">Rp4,95 jt</span>
-</div>
-<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:16px;color:#DCE6FF">
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8FB0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Semua fitur Basic</li>
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8FB0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Biaya operasional</li>
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8FB0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Multi-user</li>
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8FB0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>3 fitur custom</li>
-</ul>
-<a href="https://wa.me/6285882672909?text=Halo+TUMU%2C+saya+tertarik+paket+Advanced" style="margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;background:#fff;color:#0A1A4F;font-weight:700;font-size:16px">Tanya paket Advanced</a>
-</div>
-
-<div style="flex:1 1 300px;box-sizing:border-box;background:#1F4FD8;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:20px">
-<h3 style="margin:0;font-size:22px;font-weight:800;color:#fff">Powerful</h3>
-<div style="display:flex;flex-direction:column;gap:2px">
-<span style="font-size:15px;color:#DCE6FF;text-decoration:line-through">Rp12,5 jt</span>
-<span style="font-size:40px;font-weight:800;color:#fff;line-height:1.1">Rp9,5 jt</span>
-</div>
-<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:16px;color:#fff">
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Semua fitur Advanced</li>
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Rekap pajak</li>
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Notifikasi WhatsApp</li>
-<li style="display:flex;gap:10px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Marketplace</li>
-</ul>
-<a href="https://wa.me/6285882672909?text=Halo+TUMU%2C+saya+tertarik+paket+Powerful" style="margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;background:#0A1A4F;color:#fff;font-weight:700;font-size:16px">Tanya paket Powerful</a>
-</div>
-
-</div>
-<div style="background:#F5F8FF;border:1px dashed #AFC0F0;border-radius:16px;padding:20px 24px;display:flex;flex-direction:column;gap:6px">
-<span style="font-size:15px;font-weight:800;color:#0A1A4F">Layanan tambahan</span>
-<span style="font-size:16px;line-height:1.6;color:#475569">Kelola iklan Meta, website, optimasi Shopee &amp; Tokopedia, dan pembukuan. Tanyakan lewat WhatsApp.</span>
-</div>
-</div>
+<!-- KENAPA TUMU -->
+<section class="sec dark" id="kenapa">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Kenapa tumu</p>
+      <h2 class="h2">Partner yang ikut <span class="alt">turun ke lapangan.</span></h2>
+    </div>
+    <div class="why">
+      <article class="why-card why-card--feat rv">
+        <span class="num">01</span>
+        <h3>Dibuat sesuai alur Anda</h3>
+        <p>Bukan template. Sistem mengikuti cara bisnis Anda berjalan, bukan sebaliknya.</p>
+      </article>
+      <article class="why-card rv">
+        <span class="num">02</span>
+        <h3>Satu partner, ujung ke ujung</h3>
+        <p>Sistem, SOP, training, sampai risk management ditangani satu tim.</p>
+      </article>
+      <article class="why-card rv">
+        <span class="num">03</span>
+        <h3>Tim Anda siap pakai</h3>
+        <p>Training dan sertifikasi memastikan sistem benar-benar dijalankan setiap hari.</p>
+      </article>
+      <article class="why-card rv">
+        <span class="num">04</span>
+        <h3>Fokus ke hasil bisnis</h3>
+        <p>Ukurannya jelas: proses lebih cepat, biaya turun, omset naik.</p>
+      </article>
+    </div>
+  </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq" style="background:#fff">
-<div style="max-width:800px;margin:0 auto;box-sizing:border-box;padding:72px 24px;display:flex;flex-direction:column;gap:32px">
-<h2 style="margin:0;font-size:clamp(28px,4vw,40px);line-height:1.1;font-weight:800;color:#0A1A4F;letter-spacing:-0.01em">Pertanyaan yang sering muncul</h2>
-<div style="display:flex;flex-direction:column;gap:12px">
-
-<details style="background:#F5F8FF;border:1px solid #D5DEF7;border-radius:16px;padding:0 22px">
-<summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;font-size:17px;font-weight:700;color:#0A1A4F"><span>Berapa lama sampai sistemnya jadi?</span><svg class="faq-plus" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B3FA8" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="flex:none;transition:transform .2s"><path d="M12 5v14M5 12h14"/></svg></summary>
-<p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#475569">Targetnya 7 hari, dihitung sejak kamu menceritakan alur toko dan kami mencatat kebutuhannya.</p>
-</details>
-
-<details style="background:#F5F8FF;border:1px solid #D5DEF7;border-radius:16px;padding:0 22px">
-<summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;font-size:17px;font-weight:700;color:#0A1A4F"><span>Bayarnya sekali atau bulanan?</span><svg class="faq-plus" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B3FA8" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="flex:none;transition:transform .2s"><path d="M12 5v14M5 12h14"/></svg></summary>
-<p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#475569">Harga paket di halaman ini adalah sekali bayar.</p>
-</details>
-
-<details style="background:#F5F8FF;border:1px solid #D5DEF7;border-radius:16px;padding:0 22px">
-<summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;font-size:17px;font-weight:700;color:#0A1A4F"><span>Apakah bisa dipakai dari HP?</span><svg class="faq-plus" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B3FA8" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="flex:none;transition:transform .2s"><path d="M12 5v14M5 12h14"/></svg></summary>
-<p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#475569">Bisa. Stok, invoice, dan laporan bisa dibuka dari HP, jadi tidak perlu duduk di depan komputer.</p>
-</details>
-
-<details style="background:#F5F8FF;border:1px solid #D5DEF7;border-radius:16px;padding:0 22px">
-<summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;font-size:17px;font-weight:700;color:#0A1A4F"><span>Konsultasi dan demonya gratis?</span><svg class="faq-plus" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B3FA8" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="flex:none;transition:transform .2s"><path d="M12 5v14M5 12h14"/></svg></summary>
-<p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#475569">Ya, konsultasi dan demo gratis. Kirim pesan lewat WhatsApp dan ceritakan toko kamu.</p>
-</details>
-
-</div>
-</div>
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap rv">
+    <p class="eyebrow">Mulai sekarang</p>
+    <h2>Semua dimulai dari <span class="alt">satu obrolan.</span></h2>
+    <p>Ceritakan tantangan operasional Anda, kami bantu petakan solusinya.</p>
+    <a class="btn btn-white" href="https://wa.me/6285882672909?text=Halo+tumu%2C+saya+mau+konsultasi+soal+operasional+bisnis+saya">
+      <svg><use href="#ic-wa"/></svg>Chat WhatsApp sekarang<svg><use href="#ic-arrow"/></svg>
+    </a>
+  </div>
 </section>
-
-<!-- CTA AKHIR -->
-<section style="background:#0A1A4F">
-<div style="max-width:1120px;margin:0 auto;box-sizing:border-box;padding:72px 24px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center">
-<h2 style="margin:0;font-size:clamp(30px,5vw,48px);line-height:1.1;font-weight:800;color:#fff;letter-spacing:-0.01em;max-width:680px">Mulai dari satu chat. Stok toko beres dalam 7 hari.</h2>
-<p style="margin:0;font-size:18px;line-height:1.6;color:#BFD0FF;max-width:520px">Ceritakan alur tokomu, kami yang menyusun sistemnya.</p>
-<a href="https://wa.me/6285882672909?text=Halo+TUMU%2C+saya+mau+konsultasi+gratis+sistem+stok+toko" style="display:flex;align-items:center;justify-content:center;min-height:56px;padding:0 36px;border-radius:14px;background:#fff;color:#0A1A4F;font-weight:800;font-size:18px">Chat WhatsApp sekarang</a>
-</div>
-</section>
+</main>
 
 <!-- FOOTER -->
-<footer style="background:#071238">
-<div style="max-width:1120px;margin:0 auto;box-sizing:border-box;padding:28px 24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
-<span style="font-size:15px;font-weight:800;color:#fff;letter-spacing:0.02em">TUMU</span>
-<a href="https://www.instagram.com/tumu.idn/" style="display:flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:#BFD0FF">Instagram @tumu.idn</a>
-</div>
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#atas" class="logo">
+          <span class="logo-mark"><svg style="color:var(--blue)"><use href="#tumu-mark"/></svg></span>
+          tumu
+        </a>
+        <p class="tagline">Smarter systems. Smoother logistics.</p>
+      </div>
+      <div class="foot-links">
+        <a class="foot-link" href="https://wa.me/6285882672909?text=Halo+tumu%2C+saya+mau+konsultasi+soal+operasional+bisnis+saya"><svg><use href="#ic-wa"/></svg>WhatsApp</a>
+        <a class="foot-link" href="https://www.instagram.com/tumu.idn/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>@tumu.idn</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr">2026</span> tumu. All rights reserved.</span>
+      <span>Satu partner untuk seluruh operasional.</span>
+    </div>
+  </div>
 </footer>
 
-</div>
+<a class="fab" href="https://wa.me/6285882672909?text=Halo+tumu%2C+saya+mau+konsultasi+soal+operasional+bisnis+saya" aria-label="Chat tumu di WhatsApp"><svg><use href="#ic-wa"/></svg></a>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
 </body>
 </html>
